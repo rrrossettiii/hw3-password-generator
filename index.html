@@ -12,25 +12,30 @@
 			<header>
 				<h1>Password Generator</h1>
 			</header>
-			<div class="card">
-				<div class="card-header">
-					<h2>Generate a Password</h2>
+			<main>
+				<div class="card">
+					<div class="card-header">
+						<h2>Generate a Password</h2>
+					</div>
+					<!-- Password area -->
+					<div class="card-body">
+						<textarea
+							readonly
+							class="placeholder"
+							id="password"
+							placeholder="Your Secure Password"
+							aria-label="Generated Password"
+						></textarea>
+					</div>
+					<!-- Buttons -->
+					<div class="card-footer">
+						<button id="generate" class="btn">Generate Password</button>
+						<button id="reset" class="rst">reset</button>
+					</div>
 				</div>
-				<div class="card-body">
-					<textarea
-						readonly
-						class="placeholder"
-						id="password"
-						placeholder="Your Secure Password"
-						aria-label="Generated Password"
-					></textarea>
-				</div>
-				<div class="card-footer">
-					<button id="generate" class="btn">Generate Password</button>
-					<button id="reset" class="rst">reset</button>
-				</div>
-			</div>
+			</main>
 		</div>
+		<!-- link to JS -->
 		<script src="script.js"></script>
 	</body>
 </html>
