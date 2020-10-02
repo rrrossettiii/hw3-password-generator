@@ -28,7 +28,7 @@ function copy() {
 	copyText.setSelectionRange(0, 99999);
 	document.execCommand("copy");
 	alert(
-		`"${copyText.value}"` + "was succesfully copied to clipboard. \n \n \n"
+		`"${copyText.value}"` + "  was succesfully copied to clipboard. \n \n \n"
 	);
 }
 
