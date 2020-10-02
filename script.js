@@ -55,7 +55,7 @@ function generatePW() {
 		// Loop - forces user to choose at least one critera
 		//
 		while (characters === "") {
-			alert("Please accept at least one criteria to procede. \n \n \n");
+			alert("Please accept at least 1 option to procede. \n \n \n");
 			prompts();
 		}
 
