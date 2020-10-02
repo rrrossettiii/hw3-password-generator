@@ -62,7 +62,7 @@ function generatePW() {
 		// Password length and character string combined.
 		//
 		passArray = [pwLength, characters];
-		// console.log(passArray);
+		console.log(passArray);
 	}
 
 	// The Password Generator
