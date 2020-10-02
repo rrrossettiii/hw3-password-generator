@@ -36,7 +36,7 @@ function copy() {
 			"  was succesfully copied to your clipboard. \n \n \n"
 	);
 	if (thankYou === 1) {
-		alert("Thank you for trying The Secure Password Generator. \n \n \n");
+		alert("Thank you for using Secure Password Generator. \n \n \n");
 		thankYou = 0;
 	}
 }
@@ -66,7 +66,7 @@ function generatePW() {
 		// Loop - forces user to choose at least one critera
 		//
 		while (characters === "") {
-			alert("Please accept at least 1 option to procede. \n \n \n");
+			alert("Please accept at least 1 option to procede. \n \n");
 			prompts();
 		}
 
