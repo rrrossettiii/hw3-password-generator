@@ -1,6 +1,10 @@
 // PASSWORD GENERATOR
 //
 
+// Thank you message - only runs once
+//
+thankYou = 1;
+
 // Buttons
 //
 // // Reset Button - reloads page & replaces text field
@@ -28,8 +32,13 @@ function copy() {
 	copyText.setSelectionRange(0, 99999);
 	document.execCommand("copy");
 	alert(
-		`"${copyText.value}"` + "  was succesfully copied to clipboard. \n \n \n"
+		`"${copyText.value}"` +
+			"  was succesfully copied to your clipboard. \n \n \n"
 	);
+	if (thankYou === 1) {
+		alert("Thank you for trying The Secure Password Generator. \n \n \n");
+		thankYou = 0;
+	}
 }
 
 // This function runs all of the prompts and the generator itself and it writes the code to the textfield in index.html
