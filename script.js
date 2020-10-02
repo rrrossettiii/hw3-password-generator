@@ -27,7 +27,9 @@ function copy() {
 	copyText.select();
 	copyText.setSelectionRange(0, 99999);
 	document.execCommand("copy");
-	alert("Copied the text: " + `"${copyText.value}" \n \n \n`);
+	alert(
+		`"${copyText.value}"` + "was succesfully copied to clipboard. \n \n \n"
+	);
 }
 
 // This function runs all of the prompts and the generator itself and it writes the code to the textfield in index.html
