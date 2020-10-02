@@ -13,33 +13,36 @@ function generatePW() {
 		// Prompt - length of password
 		//
 		var pwLength = prompt(
-			"How many characters long whould you like your password to be?",
+			"How many characters long whould you like your password to be? \n \n",
 			"Pick a number between 8-128."
 		);
+
+		// Loop - forces password length between 8-128.
+		//
+		while (pwLength < 7 || pwLength > 129 || isNaN(pwLength)) {
+			alert("Please select a number between 8-128!");
+			var pwLength = prompt(
+				"How many characters long whould you like your password to be? \n \n \n",
+				"Pick a number between 8-128."
+			);
+		}
 		prompts();
 
-		// Forces user to choose at least one critera
+		// Loop - forces user to choose at least one critera
 		//
 		while (characters === "") {
-			alert("Please select at least on criteria to procede.");
+			alert("Please accept at least one criteria to procede. \n \n \n");
 			prompts();
 		}
 
 		// Character criteria prompts
+		//
 		function prompts() {
-			// Prompt - loop that keeps password length between 8-128.
-			//
-			while (pwLength < 7 || pwLength > 129) {
-				alert("Please select a number between 8-128!");
-				var pwLength = prompt(
-					"How many characters long whould you like your password to be?",
-					"Pick a number between 8-128."
-				);
-			}
-
 			// Prompt - use capital letter?
 			//
-			if (confirm("Would you like to use lower case letters?") === true) {
+			if (
+				confirm("Would you like to use lower case letters? \n \n \n") === true
+			) {
 				var abc = "abcdefghijklmnopqrstuvwxyz";
 			} else {
 				var abc = "";
@@ -47,7 +50,7 @@ function generatePW() {
 
 			// Prompt - use capital letters?
 			//
-			if (confirm("Would you like to use capital letters?") === true) {
+			if (confirm("Would you like to use capital letters? \n \n \n") === true) {
 				var ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 			} else {
 				var ABC = "";
@@ -55,7 +58,7 @@ function generatePW() {
 
 			// Prompt - use numbers?
 			//
-			if (confirm("Would you like to use numbers?") === true) {
+			if (confirm("Would you like to use numbers? \n \n \n") === true) {
 				var num = "0123456789";
 			} else {
 				var num = "";
@@ -63,7 +66,9 @@ function generatePW() {
 
 			// Prompt - use symbols?
 			//
-			if (confirm("Would you like to use special characters?") === true) {
+			if (
+				confirm("Would you like to use special characters? \n \n \n") === true
+			) {
 				var sym = ' !#$%&()*+,-./:;<=>?@[]^_`{|}"~';
 			} else {
 				var sym = "";
