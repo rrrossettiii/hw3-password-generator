@@ -119,8 +119,8 @@ function generatePW() {
 				Math.floor(Math.random() * charactersLength)
 			);
 		}
-		document.getElementById("reset").style.backgroundColor = "orange";
-		document.getElementById("copy").style.visibility = "visible";
+		document.getElementById("reset").style.backgroundColor = "goldenrod";
+		document.getElementById("copy").style.backgroundColor = "green";
 		return password;
 	}
 
