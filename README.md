@@ -1,6 +1,6 @@
 # Secure Password Generator
 
-This webite uses Javascript to generate a secure password using the chosen criteria.
+This webite uses Javascript to generate a secure password using the chosen case-sensitive characters, symbols, and numbers.
 
 ## Features
 
