@@ -1,10 +1,34 @@
 // PASSWORD GENERATOR
 //
 
+// Buttons
+//
+// // Reset Button - reloads page & replaces text field
+//
+var resetBtn = document.querySelector("#reset");
+resetBtn.addEventListener("click", reload);
+function reload() {
+	document.querySelector(".placeholder").value = "";
+	location.reload();
+	return false;
+}
+
 // Generate Button
 //
 var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", generatePW);
+
+// Copy Button - copys to clipboard
+//
+var copyBtn = document.querySelector("#copy");
+copyBtn.addEventListener("click", copy);
+function copy() {
+	var copyText = document.getElementById("password");
+	copyText.select();
+	copyText.setSelectionRange(0, 99999);
+	document.execCommand("copy");
+	alert("Copied the text: " + `"${copyText.value}" \n \n \n`);
+}
 
 // This function runs all of the prompts and the generator itself and it writes the code to the textfield in index.html
 //
@@ -96,6 +120,7 @@ function generatePW() {
 			);
 		}
 		document.getElementById("reset").style.backgroundColor = "orange";
+		document.getElementById("copy").style.visibility = "visible";
 		return password;
 	}
 
@@ -104,14 +129,4 @@ function generatePW() {
 	var password = generatePassword(passArray[0]);
 	var passwordText = document.querySelector("#password");
 	passwordText.value = password;
-}
-
-// Reset Button - reloads page & replaces text field
-//
-var resetBtn = document.querySelector("#reset");
-resetBtn.addEventListener("click", reload);
-function reload() {
-	document.querySelector(".placeholder").value = "";
-	location.reload();
-	return false;
 }
