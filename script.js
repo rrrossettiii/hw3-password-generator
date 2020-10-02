@@ -16,52 +16,63 @@ function generatePW() {
 			"How many characters long whould you like your password to be?",
 			"Pick a number between 8-128."
 		);
+		prompts();
 
-		// Prompt - loop that keeps password length between 8-128.
+		// Forces user to choose at least one critera
 		//
-		while (pwLength < 7 || pwLength > 129) {
-			alert("Please select a number between 8-128!");
-			var pwLength = prompt(
-				"How many characters long whould you like your password to be?",
-				"Pick a number between 8-128."
-			);
+		while (characters === "") {
+			alert("Please select at least on criteria to procede.");
+			prompts();
 		}
 
-		// Prompt - use capital letter?
-		//
-		if (confirm("Would you like to use lower case letters?") === true) {
-			var abc = "abcdefghijklmnopqrstuvwxyz";
-		} else {
-			var abc = "";
-		}
+		// Character criteria prompts
+		function prompts() {
+			// Prompt - loop that keeps password length between 8-128.
+			//
+			while (pwLength < 7 || pwLength > 129) {
+				alert("Please select a number between 8-128!");
+				var pwLength = prompt(
+					"How many characters long whould you like your password to be?",
+					"Pick a number between 8-128."
+				);
+			}
 
-		// Prompt - use capital letters?
-		//
-		if (confirm("Would you like to use capital letters?") === true) {
-			var ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		} else {
-			var ABC = "";
-		}
+			// Prompt - use capital letter?
+			//
+			if (confirm("Would you like to use lower case letters?") === true) {
+				var abc = "abcdefghijklmnopqrstuvwxyz";
+			} else {
+				var abc = "";
+			}
 
-		// Prompt - use numbers?
-		//
-		if (confirm("Would you like to use numbers?") === true) {
-			var num = "0123456789";
-		} else {
-			var num = "";
-		}
+			// Prompt - use capital letters?
+			//
+			if (confirm("Would you like to use capital letters?") === true) {
+				var ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			} else {
+				var ABC = "";
+			}
 
-		// Prompt - use symbols?
-		//
-		if (confirm("Would you like to use special characters?") === true) {
-			var sym = ' !#$%&()*+,-./:;<=>?@[]^_`{|}"~';
-		} else {
-			var sym = "";
-		}
+			// Prompt - use numbers?
+			//
+			if (confirm("Would you like to use numbers?") === true) {
+				var num = "0123456789";
+			} else {
+				var num = "";
+			}
 
-		// All selected character strings put together
-		//
-		characters = abc.concat(num, sym, ABC);
+			// Prompt - use symbols?
+			//
+			if (confirm("Would you like to use special characters?") === true) {
+				var sym = ' !#$%&()*+,-./:;<=>?@[]^_`{|}"~';
+			} else {
+				var sym = "";
+			}
+
+			// All selected character strings put together
+			//
+			characters = abc.concat(num, sym, ABC);
+		}
 
 		// Password length and character string combined.
 		//
