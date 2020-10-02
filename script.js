@@ -27,29 +27,42 @@ function generatePW() {
 			);
 		}
 
+		// Prompt - use capital letter?
+		//
+		if (confirm("would you like to use capital letters?") === true) {
+			var ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		} else {
+			var ABC = "";
+		}
+
 		// Prompt - use numbers?
 		//
 		if (confirm("Would you like to use numbers?") === true) {
 			var num = "0123456789";
+		} else {
+			var num = "";
 		}
 
 		// Prompt - use symbols?
 		//
 		if (confirm("would you like to use special characters?") === true) {
 			var sym = ' !#$%&()*+,-./:;<=>?@[]^_`{|}"~';
+		} else {
+			var sym = "";
 		}
 
-		// Base character string.
+		// Base alphabet string.
 		//
-		var abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		var abc = "abcdefghijklmnopqrstuvwxyz";
 
 		// All selected character strings put together
 		//
-		characters = abc.concat(num, sym);
+		characters = abc.concat(num, sym, ABC);
 
 		// Password length and character string combined.
 		//
 		passArray = [pwLength, characters];
+		// console.log(passArray);
 	}
 
 	// The Password Generator
