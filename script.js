@@ -29,7 +29,15 @@ function generatePW() {
 
 		// Prompt - use capital letter?
 		//
-		if (confirm("would you like to use capital letters?") === true) {
+		if (confirm("Would you like to use lower case letters?") === true) {
+			var abc = "abcdefghijklmnopqrstuvwxyz";
+		} else {
+			var abc = "";
+		}
+
+		// Prompt - use capital letters?
+		//
+		if (confirm("Would you like to use capital letters?") === true) {
 			var ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		} else {
 			var ABC = "";
@@ -45,15 +53,11 @@ function generatePW() {
 
 		// Prompt - use symbols?
 		//
-		if (confirm("would you like to use special characters?") === true) {
+		if (confirm("Would you like to use special characters?") === true) {
 			var sym = ' !#$%&()*+,-./:;<=>?@[]^_`{|}"~';
 		} else {
 			var sym = "";
 		}
-
-		// Base alphabet string.
-		//
-		var abc = "abcdefghijklmnopqrstuvwxyz";
 
 		// All selected character strings put together
 		//
