@@ -1,13 +1,12 @@
 // PASSWORD GENERATOR
 //
 
-// Thank you message - only runs once
+// Generate Button
 //
-thankYou = 1;
+var generateBtn = document.querySelector("#generate");
+generateBtn.addEventListener("click", generatePW);
 
-// Buttons
-//
-// // Reset Button - reloads page & replaces text field
+// // Reset Button - reloads page & replaces text field.
 //
 var resetBtn = document.querySelector("#reset");
 resetBtn.addEventListener("click", reload);
@@ -17,12 +16,7 @@ function reload() {
 	return false;
 }
 
-// Generate Button
-//
-var generateBtn = document.querySelector("#generate");
-generateBtn.addEventListener("click", generatePW);
-
-// Copy Button - copys to clipboard
+// Copy Button - copies to clipboard.
 //
 var copyBtn = document.querySelector("#copy");
 copyBtn.addEventListener("click", copy);
@@ -33,7 +27,7 @@ function copy() {
 	document.execCommand("copy");
 	alert(
 		`"${copyText.value}"` +
-			"  was succesfully copied to your clipboard. \n \n \n"
+			"  was successfully copied to your clipboard. \n \n \n"
 	);
 	if (thankYou === 1) {
 		alert("Thank you for using Secure Password Generator. \n \n \n");
@@ -41,14 +35,42 @@ function copy() {
 	}
 }
 
-// This function runs all of the prompts and the generator itself and it writes the code to the textfield in index.html
+// This function runs all of the prompts and the generator itself and it writes the code to the text field in index.html
 //
 function generatePW() {
-	if (typeof passArray === "undefined") {
-		// Prompt - length of password
-		//
-		var pwLength = prompt(
-			"How many characters long whould you like your password to be? \n \n",
+	prompts();
+	writePassword();
+}
+// The Password Generator
+//
+function passwordGenerator(length) {
+	var password = "";
+	for (var i = 0; i < length; i++) {
+		password += combinedCharacters.charAt(
+			Math.floor(Math.random() * passwordArray[1].length)
+		);
+	}
+	document.getElementById("reset").style.backgroundColor = "goldenrod";
+	document.getElementById("copy").style.backgroundColor = "green";
+	return password;
+}
+
+// Writes the generated password to the 'password' id in index.html
+//
+function writePassword() {
+	var password = passwordGenerator(passwordArray[0]);
+	var passwordText = document.querySelector("#password");
+	passwordText.value = password;
+}
+
+// Password criteria Prompts
+//
+function prompts() {
+	// Prompt - length of password
+	//
+	if (typeof pwLength === "undefined") {
+		pwLength = prompt(
+			"How many combinedCharacters long would you like your password to be? \n \n",
 			"Pick a number between 8-128."
 		);
 
@@ -56,88 +78,74 @@ function generatePW() {
 		//
 		while (pwLength < 7 || pwLength > 129 || isNaN(pwLength)) {
 			alert("Please select a number between 8-128!");
-			var pwLength = prompt(
-				"How many characters long whould you like your password to be? \n \n \n",
+			pwLength = prompt(
+				"How many combinedCharacters long would you like your password to be? \n \n \n",
 				"Pick a number between 8-128."
 			);
 		}
-		prompts();
 
-		// Loop - forces user to choose at least one critera
+		// Continue prompts
 		//
-		while (characters === "") {
-			alert("Please accept at least 1 option to procede. \n \n");
+		combinedCharacters = "";
+	}
+
+	// Prompts - character criteria
+	//
+	if (combinedCharacters === "") {
+		// Prompt - use lower case letters?
+		//
+		if (
+			confirm("Would you like to use lower case letters? \n \n \n") === true
+		) {
+			var abc = "abcdefghijklmnopqrstuvwxyz";
+		} else {
+			var abc = "";
+		}
+
+		// Prompt - use capital letters?
+		//
+		if (confirm("Would you like to use capital letters? \n \n \n") === true) {
+			var ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		} else {
+			var ABC = "";
+		}
+
+		// Prompt - use numbers?
+		//
+		if (confirm("Would you like to use numbers? \n \n \n") === true) {
+			var num = "0123456789";
+		} else {
+			var num = "";
+		}
+
+		// Prompt - use symbols?
+		//
+		if (
+			confirm("Would you like to use special characters? \n \n \n") === true
+		) {
+			var sym = ' !#$%&()*+,-./:;<=>?@[]^_`{|}"~';
+		} else {
+			var sym = "";
+		}
+
+		// All selected character strings put together
+		//
+		combinedCharacters = abc.concat(num, sym, ABC);
+
+		// Loop - forces user to choose at least one criteria
+		//
+		while (combinedCharacters === "") {
+			alert("Please accept at least 1 option to proceed. \n \n");
 			prompts();
 		}
-
-		// Character criteria prompts
-		//
-		function prompts() {
-			// Prompt - use capital letter?
-			//
-			if (
-				confirm("Would you like to use lower case letters? \n \n \n") === true
-			) {
-				var abc = "abcdefghijklmnopqrstuvwxyz";
-			} else {
-				var abc = "";
-			}
-
-			// Prompt - use capital letters?
-			//
-			if (confirm("Would you like to use capital letters? \n \n \n") === true) {
-				var ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-			} else {
-				var ABC = "";
-			}
-
-			// Prompt - use numbers?
-			//
-			if (confirm("Would you like to use numbers? \n \n \n") === true) {
-				var num = "0123456789";
-			} else {
-				var num = "";
-			}
-
-			// Prompt - use symbols?
-			//
-			if (
-				confirm("Would you like to use special characters? \n \n \n") === true
-			) {
-				var sym = ' !#$%&()*+,-./:;<=>?@[]^_`{|}"~';
-			} else {
-				var sym = "";
-			}
-
-			// All selected character strings put together
-			//
-			characters = abc.concat(num, sym, ABC);
-		}
-
-		// Password length and character string combined.
-		//
-		passArray = [pwLength, characters];
-		console.log(passArray);
 	}
 
-	// The Password Generator
+	// Password length and character string combined.
 	//
-	function generatePassword(length) {
-		var password = "";
-		var charactersLength = passArray[1].length;
-		for (var i = 0; i < length; i++) {
-			password += characters.charAt(
-				Math.floor(Math.random() * charactersLength)
-			);
-		}
-		document.getElementById("reset").style.backgroundColor = "goldenrod";
-		document.getElementById("copy").style.backgroundColor = "green";
-		return password;
-	}
-
-	// Writes the generated password to the 'password' id in index.html
-	//
-	var password = generatePassword(passArray[0]);
-	var passwordText = document.querySelector("#password");
-	passwordText.value = password;
+	passwordArray = [pwLength, combinedCharacters];
+	// console.log(passwordArray);
 }
+
+// Thank you message - only runs once
+//
+thankYou = 1;
